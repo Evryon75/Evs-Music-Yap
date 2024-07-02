@@ -1,0 +1,35 @@
+<div style="display: flex">
+  <h3>Artist</h3>
+  <input #artistName value="{{sample.artist_name}}">
+  <h3>Link</h3>
+  <input class="link" #ArtistImage value="{{sample.artist_image}}">
+</div>
+<h3>Comment</h3>
+<textarea #ArtistComment value="{{sample.artist_comment}}"></textarea>
+<div style="display: flex">
+  <h3>Album</h3>
+  <input #AlbumName value="{{sample.album_name}}">
+  <h3>Img</h3>
+  <input class="link" #AlbumImage value="{{sample.album_image}}">
+</div>
+<h3>Comment</h3>
+<textarea #AlbumComment value="{{sample.album_comment}}"></textarea>
+<div style="display: flex">
+  <h3>Songs</h3>
+  <button style="margin: 10px; position: relative; top: 5px" (click)="addSong()">+</button>
+</div>
+
+<div *ngFor="let s of songs" (input)="s.title = SongName.value; s.comment = SongComment.value; s.link = SongLink.value">
+  <div style="display: flex">
+    <h3>Song</h3>
+    <input #SongName value="{{s.title}}">
+    <h3>Link</h3>
+    <input class="link" #SongLink value="{{s.link}}">
+  </div>
+  <h3>Comment</h3>
+  <textarea #SongComment value="{{s.comment}}"></textarea>
+  <button (click)="songs.splice(songs.indexOf(s), 1)" style="width: 100%">Delete song</button>
+</div>
+<br>
+<button (click)="confirmation()" style="width: 100%">CONFIRM</button>
+<button routerLink="display/{{sample.id}}" style="width: 100%">CANCEL</button>

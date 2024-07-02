@@ -1,0 +1,24 @@
+<div style="display: flex; margin-top: 20px">
+  <img [src]="sanitizer.bypassSecurityTrustResourceUrl(sample.album_image)" style="max-width: 25%; object-fit: contain;">
+  <h1 style="padding-left: 15px"><span style="font-size: 50%; color: gray">Album:</span><br>{{sample.album_name}}</h1>
+</div>
+<br>
+<div *ngFor="let song of songs">
+  <h3 *ngIf="songs.indexOf(song) == 0">{{song}}</h3>
+  <div *ngIf="songs.indexOf(song) != 0">
+    <h2>{{song.split('[SECTION]')[0]}}</h2>
+    <iframe style="border-radius:12px" [src]="sanitizer.bypassSecurityTrustResourceUrl(embedify(song.split('[SECTION]')[1]))" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <h3>{{song.split('[SECTION]')[2]}}</h3>
+
+  </div>
+</div>
+<h1 style="padding-left: 15px"><span style="font-size: 50%; color: gray">Artist:</span><br>{{sample.artist_name}}</h1>
+<iframe style="border-radius:12px" [src]="sanitizer.bypassSecurityTrustResourceUrl(embedify(sample.artist_image))" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<h3>
+  {{sample.artist_comment}}
+</h3>
+<br>
+<div style="text-align: center; background-color: #23272a; padding: 10px; border-radius: 20px">
+  <button (click)="edit()" style="width: 100%">Edit</button>
+  <button (click)="remove()" style="width: 100%">Delete</button>
+</div>

@@ -1,0 +1,9 @@
+<div *ngFor="let entry of sample">
+  <div (click)="display(entry.id)" style="background-color: #23272a; cursor: pointer; display: flex; border: 2px solid gray; padding-left: 35px; margin: 20px; border-radius: 20px">
+    <img [src]="sanitizer.bypassSecurityTrustResourceUrl(entry.album_image)" style="max-width: 20%; object-fit: contain;">
+    <div style="display: list-item">
+      <h1 style="padding-left: 25px; position: relative; top: -5%;"><br>{{entry.album_name}}</h1>
+      <h3 style="padding-left: 25px; position: relative; top: -20%; color: gray"><br>{{entry.artist_name}}</h3>
+    </div>
+  </div>
+</div>

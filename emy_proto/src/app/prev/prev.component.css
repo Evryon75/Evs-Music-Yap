@@ -1,0 +1,10 @@
+@media only screen and (max-width: 690px) {
+  img {
+    width: 0;
+  }
+  h1, h3 {
+    margin: 0;
+    position: relative;
+    left: -30px
+  }
+}
